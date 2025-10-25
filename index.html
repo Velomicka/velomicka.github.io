@@ -13,6 +13,19 @@
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <style>
+  /* Animation au défilement */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+  }
+
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
   </head>
   <body class="is-preload">
     <!-- Header -->
@@ -79,9 +92,9 @@
           <div class="container">
             <header class="major">
               <h2>Micka Randriamahefa</h2>
-              <p>Site Web</p>
+              <p class="reveal">Site Web</p>
             </header>
-            <p>
+            <p class="reveal">
               <em>Bonjour! Je suis Micka, étudiante au deuxième cycle à l'Université Laval.
               Je fais une maîtrise en science politique spécialisée en politique internationale. 
               Je suis passionnée de géopolitique et de philosophie. Je vis à Québec et j'adore les chiens.</em>
@@ -93,24 +106,24 @@
         <section id="two">
           <div class="container">
             <h3>Mes réalisations</h3>
-            <p>
+            <p class="reveal">
               <em>Tout au long de mon parcours académique, j’ai eu l’opportunité de suivre diverses formations, 
               de m’impliquer dans des activités bénévoles, de m’investir en tant que membre d’une association universitaire, 
               ainsi que de participer à un programme d’échange international.</em>
             </p>
-            <ul class="feature-icons">
-              <li class="icon solid fa-code">
+            <ul class="feature-icons reveal">
+              <li class="icon solid fa-code reveal">
                 <em>Bénévolat pour <strong>ATD Quart Monde</strong></em>
               </li>
-              <li class="icon solid fa-cubes">
+              <li class="icon solid fa-cubes reveal">
                 <em>Diplômée d'un <strong>baccalauréat intégré en philosophie et science politique</strong></em>
               </li>
-              <li class="icon solid fa-book">
+              <li class="icon solid fa-book reveal">
                 <em>Échange universitaire à l'<strong>University of East Anglia</strong></em>
               </li>
-              <li class="icon solid fa-coffee"><em>Participation au <strong>Washington Model Organization of American States</strong></em></li>
-              <li class="icon solid fa-bolt"><em>Créative, autonome et rigoureuse</em></li>
-              <li class="icon solid fa-users"><em>Formation linguistique à l'<strong>EF New York</strong></em></li>
+              <li class="icon solid fa-coffee reveal"><em>Participation au <strong>Washington Model Organization of American States</strong></em></li>
+              <li class="icon solid fa-bolt reveal"><em>Créative, autonome et rigoureuse</em></li>
+              <li class="icon solid fa-users reveal"><em>Formation linguistique à l'<strong>EF New York</strong></em></li>
             </ul>
           </div>
         </section>
@@ -119,18 +132,18 @@
         <section id="three">
           <div class="container">
             <h3>Mon CV</h3>
-            <p>
+            <p class="reveal">
               <em>Mon parcours scolaire et universitaire s’est construit à travers plusieurs systèmes éducatifs,
               ce qui m’a permis de développer une grande capacité d’adaptation.</em> 
             </p>
-            <div class="features">
-              <article>
-                <a href="#" class="image"
-                  ><img src="images/photositeee.png" alt="Photo CV"
+            <div class="features reveal">
+              <article class="reveal">
+                <a href="#" class="image reveal"
+                  ><img src="images/photocv.png" alt="Photo CV"
                 /></a>
-                <div class="inner">
-                  <h4>Résumé</h4>
-                  <p>
+                <div class="inner reveal">
+                  <h4 class="reveal">Résumé</h4>
+                  <p class="reveal">
                     <em>Le CV ci-joint présente en détail les établissements d’enseignement que j’ai fréquentés, mon parcours professionnel,
                     les stages que j’ai effectués, ainsi que les langues que je parle couramment.</em>
                   </p>
@@ -141,18 +154,18 @@
         </section>
 
         <!-- Four -->
-        <section id="four">
-          <div class="container">
-            <h3>Me joindre</h3>
-            <p>
+        <section id="four" class="reveal">
+          <div class="container reveal">
+            <h3 class="reveal">Me joindre</h3>
+            <p class="reveal">
               <em>Écrivez-moi à l'adresse email ci-dessous.</em>
             </p>
-            <div class="row gtr-uniform">
-              <div class="col-12">
+            <div class="row gtr-uniform reveal">
+              <div class="col-12 reveal">
                 <!-- Vous pouvez mettre votre email ici au lieu de your-email@example.com -->
                 <a
                   href="mailto:micka.randriamahefa.1@ulaval.ca?subject=Sujet&body=Bonjour Micka,."
-                  class="button primary"
+                  class="button primary reveal"
                 >
                   Envoyer un email
                 </a>
@@ -183,6 +196,24 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+  // Fonction pour vérifier les éléments visibles
+  function revealOnScroll() {
+    const reveals = document.querySelectorAll('.reveal');
+    const windowHeight = window.innerHeight;
+
+    reveals.forEach(el => {
+      const elementTop = el.getBoundingClientRect().top;
+      const elementVisible = 150; // distance avant que l’élément n’apparaisse
+      if (elementTop < windowHeight - elementVisible) {
+        el.classList.add('active');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', revealOnScroll);
+  window.addEventListener('load', revealOnScroll);
+</script>
   </body>
 </html>
 
