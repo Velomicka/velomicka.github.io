@@ -1,0 +1,79 @@
+---
+title: "POL-6078 : Projet de fin de session"
+author: "Micka Randriamahefa"
+date: "2025-12-12"
+output: html_document
+---
+
+Question de recherche et revue de littérature 
+
+
+La question de recherche est la suivante : Comment ont évolué les pratiques gouvernementales de filtrage et de surveillance Internet en France suite aux attaques terroristes entre 2015 et 2023 ? 
+
+La formulation de cette question de recherche a bénéficié de l'assistance de l'intelligence artificielle Claude. Après avoir exposé mon projet d'étude sur l'évolution de la surveillance numérique en contexte de menace terroriste, j'ai demandé l'identification de différents angles d'investigation possibles. Parmi les perspectives proposées, celle de l'évolution temporelle a été privilégiée. Pour circonscrire le terrain d'enquête, plusieurs cas nationaux ont été suggérés. La France a été retenue en raison de l'abondance de la littérature scientifique documentant ce cas, constat établi lors d'une revue exploratoire effectuée sur Elicit.
+
+Une fois la question de recherche définie, j'ai procédé à un état des lieux de la littérature existante via la plateforme Elicit. Compte tenu des restrictions de la version gratuite, qui ne permet pas de conduire une revue systématique, j'ai demandé l'identification d'articles pertinents (juridiques, études de cas, etc.) relatifs à ma problématique. Dix articles ont été recensés, dont quatre disponibles en texte intégral. Pour compléter ce corpus, j'ai effectué des recherches complémentaires sur Google Scholar, qui ont permis d'identifier deux publications additionnelles (une analyse juridique et un compte rendu de colloque) pertinentes pour cette étude.
+
+NotebookLM a permis d'identifier les éléments centraux de chaque article, ensuite vérifiés par une lecture intégrale. Les quatre articles d'Elicit, malgré des approches différenciées, convergent sur un constat : l'évolution de la surveillance en France post-attentats révèle une pérennisation de mesures initialement exceptionnelles. La "technique de l'algorithme", introduite expérimentalement par la Loi Renseignement de 2015 jusqu'en 2018, a été prorogée à plusieurs reprises en raison d'une "[...]insuffisance de recul pour évaluer l'efficacité de l'expérimentation" (Labbay, 2023, p.119), avant son intégration définitive au droit commun par la loi du 30 juillet 2021 (Labbay, 2023, p.120). Le compte rendu de colloque issu de Google Scholar rejoint cette analyse : dix ans après 2015, un effet cliquet s'observe, où les dispositifs d'exception s'institutionnalisent sans abrogation (Desbois, 2025, §38).
+
+Bien que Zotero constitue un outil pertinent pour la gestion bibliographique, son utilisation n'a pas été jugée nécessaire dans le cadre de cette recherche, les articles provenant majoritairement de plateformes académiques (OpenEdition Journals et Cairn.info) fournissant d'ores et déjà les références complètes et les identifiants DOI. J'ai choisi de garder la citation en APA comme dans la plupart de mes rédactions pour ce projet de recherche. 
+
+
+Hypothèse
+
+
+La revue de la littérature permet de dégager l' hypothèse suivante :
+
+Les dispositifs de surveillance numérique mis en place post-attaque terroriste finissent par être intégrés dans le droit commun.
+
+La littérature documente également une évolution du discours justificatif (Labbay, 2023 ; Desbois, 2025), bien que cet aspect ne soit pas empiriquement testé dans ce projet."
+
+
+Collecte de données
+
+
+La phase de collecte de données a conduit au choix de la base V-Dem (Varieties of Democracy) : https://www.v-dem.net/data/, identifiée avec l'assistance de Claude parmi plusieurs bases en libre accès. V-Dem mesure les dimensions démocratiques et les libertés civiles dans plus de 200 pays via des indicateurs annuels, incluant le contrôle gouvernemental d'Internet. Sa structure longitudinale permet l'observation de l'évolution temporelle requise par la question de recherche. L'indicateur v2mecenefi (Government Internet filtering in practice) s'est avéré directement pertinent pour analyser le contrôle numérique dans le contexte post-attentats.
+
+L'analyse s'appuie sur le jeu de données Country-Year: V-Dem Full+Others version 15 (V-Dem), acquis au format .rds pour traitement via RStudio. Les données ont été filtrées pour isoler l'indicateur du score de filtrage d'Internet en France sur la période 2015-2023. Bien que centré sur le filtrage de contenus, cet indicateur constitue un proxy du contrôle gouvernemental numérique, dans la mesure où filtrage et surveillance partagent des infrastructures communes et s'inscrivent dans une même dynamique de contrôle accru post-attentats (Labbay, 2023 ; Desbois, 2025). Ce processus a permis de constituer un tableau synthétique sur Rstudio et de générer un graphique, qui sera visualisé et analysé dans la section suivante. 
+
+
+Analyse et visualisation des données
+
+
+Le tableau synthétique nous a donc permis d'obtenir le graphique linéaire suivant : 
+![Graphique surveillance numérique en France post-attentas 2015-2023](graphique_surveillance_france.png)
+On peut donc voir sur le graphique que le degré de filtrage gouvernemental d'Internet est mesuré sur une échelle de 0 (aucun filtrage) à 2 (haut niveau de filtrage). On constate deux pics, un en 2017 avec un score de 1.5 et un autre entre 2019-2020 aussi avec un score de 1.5. Les autres années le score est en-dessous ou égal à 1 et on peut voir qu'à partir de 2021 jusqu'en 2023 le score est resté à 1. 
+
+L'hypothèse d'une intégration permanente des dispositifs est partiellement soutenue par les données. Bien que le score maximal (1.54) n'ait pas été maintenu, l'augmentation résiduelle et durable du niveau de contrôle d'Internet entre 2015 (0.79) et 2023 (1.0) indique que certaines pratiques d'intensification, nées de l'urgence antiterroriste, ont été pérennisées, établissant ainsi un nouveau seuil normatif plus élevé.
+
+Ainsi, pour répondre à la question de recherche, l'évolution des pratiques gouvernementales de filtrage d'Internet en France (2015-2023), post-attaques terroristes, s'est révélée non-linéaire, marquée par une dynamique de pics suivie d'une consolidation normative. Ce processus a induit une hausse structurelle et permanente du contrôle, matérialisant un changement de régime où les mesures d'exception ont établi une nouvelle norme de surveillance numérique.
+
+Comme mentionné précédemment, j'ai utilisé R pour la visualisation des données, le package ggplot2 a été mobilisé pour réaliser le graphique. Le dossier regroupant les éléments utilisés pour la collecte et la visualisation de données est disponible sur mon compte github et sur mon site web. Vous y trouverez donc les données rds provenant de V-dem, le graphique et le document html.
+
+L'analyse actuelle, limitée aux pratiques empiriques, pourrait être complétée par l'examen de l'évolution du discours justificatif, tel que documenté par la littérature (Labbay,2023 ; Desbois,2025). L'intégration de cette dimension est importante pour obtenir une réponse exhaustive et nuancée à la question de recherche dans le cadre d'une étude plus approfondie.
+
+
+Discussion
+
+
+Ce projet a permis d'appliquer concrètement les outils du cours aux différentes étapes du cycle de la recherche, renforçant notamment la familiarisation avec les agents conversationnels. L'expérimentation a démontré que l'utilisation structurée d'outils d'intelligence artificielle comme Claude, de l'affinage des concepts à l'élaboration de codes R, constitue un levier puissant pour optimiser la qualité et la réalisation d'un plan de recherche préalablement défini. 
+
+La mobilisation de plateformes spécialisées telles qu'Elicit, Google Scholar et NotebookLM s'est avérée pertinente et complémentaire pour l'ensemble du projet de recherche. Elicit a facilité l'identification initiale des sources, l'accessibilité de Google Scholar a permis d'en assurer l'obtention exhaustive, tandis que NotebookLM a optimisé l'analyse par la synthèse et l'étude croisée des différents articles. 
+
+Enfin, R démontre les qualités d'un outil de recherche idéal en sciences sociales, notamment par sa capacité à intégrer de manière efficiente le filtrage et la visualisation des données. Le partage du code sur GitHub assure la réplicabilité du projet, consolidant ainsi la compréhension pratique des méthodologies du cours et leur pertinence pour les étudiants en recherche.
+
+
+Bibliographie 
+
+
+Chagnollaud, F. (2019). Vers une démocradure française ? Le terrorisme comme facilitateur d’un durcissement du régime politique. *L'Homme & la Société*, *210*(2), 199–222. [https://doi.org/10.3917/lhs.210.0199](https://doi.org/10.3917/lhs.210.0199)
+
+Desbois, D. (2025). Technologies numériques du renseignement : au service de la sécurité globale ou instrument du contrôle social ? *Terminal*, (141).  [https://doi.org/10.4000/148en](https://doi.org/10.4000/148en)
+
+Gautron, V., & Monniaux, D. (2016). De la surveillance secrète à la prédiction des risques : les dérives du fichage dans le champ de la lutte contre le terrorisme. *Archives de politique criminelle*, *38*(1), 123–135. [https://doi.org/10.3917/apc.038.0123](https://doi.org/10.3917/apc.038.0123)
+
+Labbay, A. (2023). La surveillance algorithmique des données de connexion dans le cadre de la lutte contre le terrorisme. *Cahiers de la recherche sur les droits fondamentaux*, (21).  [https://doi.org/10.4000/crdf.8874](https://doi.org/10.4000/crdf.8874)
+
+MASTOR, W. (2015). La loi sur le renseignement du 25 juillet 2015 : "la France, État de surveillance″ ?. *Actualité juridique. Droit administratif*, (36), 2018. [https://documentation.insp.gouv.fr/insp/doc/SYRACUSE/176152/la-loi-sur-le-renseignement-du-25-juillet-2015-la-france-etat-de-surveillance-wanda-mastor-n-36-2015](https://documentation.insp.gouv.fr/insp/doc/SYRACUSE/176152/la-loi-sur-le-renseignement-du-25-juillet-2015-la-france-etat-de-surveillance-wanda-mastor-n-36-2015)
+
+Tréguer, F. (2017). Intelligence Reform and the Snowden Paradox: The Case of France. *Media and communication*, *5*(1), 17–28. [https://doi.org/10.17645/mac.v5i1.821](https://doi.org/10.17645/mac.v5i1.821)
